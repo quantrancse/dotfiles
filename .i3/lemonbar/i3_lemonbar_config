@@ -1,0 +1,78 @@
+#!\bin\bash
+# i3 panel config. Powerline style.
+
+panel_fifo="/tmp/i3_lemonbar_${USER}"
+geometry="x17"
+font="Inconsolata for Powerline:size=10"
+iconfont="Font Awesome 5 Free Solid:size=10"
+res_w=$(xrandr | grep "current" | awk '{print $8a}')
+snd_cha=$(amixer get Master | grep "Playback channels:" | awk '{if ($4 == "") {printf "%s: Playback", $3} else {printf "%s %s: Playback", $3, $4}}')
+
+# Alarm settings
+cpu_alert=75                        # % cpu use
+net_alert=5                         # K net use
+
+## Battery
+## Note: levels higher than 'high' will not be highlighted.
+bat_alert_low=11
+bat_alert_mid=22
+bat_alert_high=33
+
+# update setting, in seconds (conky update in i3_lemonbar_conky
+upd_vol=3                           # Volume update
+upd_mail=300                        # Mail check update
+upd_mpd=5                           # MPD song update
+upd_tmb=60                          ## Thinkpad Multi Battery update
+
+# color definitions 
+color_back="#FF171717"              # Default background
+color_fore="#FFC5C8C6"              # Default foreground
+color_head="#FFB5BD68"              # Background for first element
+color_sec_b1="#FF282A2E"            # Background for section 1
+color_sec_b2="#FF454A4F"            # Background for section 2
+color_sec_b3="#FF60676E"            # Background for section 3
+color_icon="#FF979997"              # For icons
+color_mail="#FFCE935F"              # Background color for mail alert
+color_chat="#FFCC6666"              # Background color for chat alert
+color_cpu="#FF5F819D"               # Background color for cpu alert
+color_net="#FF5E8D87"               # Background color for net alert
+color_disable="#FF171717"           # Foreground for disable elements
+color_wsp="#FF8C9440"               # Background for selected workspace
+color_bat_low="#ffdc322f"           ## Background for low bat threshold
+color_bat_mid="#ffcb4b16"           ## Background for mid bat threshold
+color_bat_high="#ffb58900"          ## Icon for high bat threshold
+color_bat_plug="#ff859900"          ## Forground for 70-100 battery icon
+
+#default space between sections
+if [ ${res_w} -gt 1024 ]; then
+  stab='  '
+else
+  stab=' '
+fi
+
+# Char glyps for powerline fonts
+sep_left=""                        # Powerline separator left
+sep_right=""                       # Powerline separator right
+sep_l_left=""                      # Powerline light separator left
+sep_l_right=""                     # Powerline light sepatator right
+
+# Icon glyphs from Terminusicons2
+icon_clock=""                      # Clock icon
+icon_cpu=""                        # CPU icon
+icon_mem=""                        # MEM icon
+icon_dl=""                         # Download icon
+icon_ul=""                         # Upload icon
+icon_vol=""                        # Volume icon
+icon_hd=""                         # HD / icon
+icon_home=""                       # HD /home icon
+icon_mail="Ó"                       # Mail icon
+icon_chat="Ò"                       # IRC/Chat icon
+icon_music=""                      # Music icon
+icon_prog=""                       # Window icon
+icon_contact="Á"                    # Contact icon
+icon_wsp=""                        # Workspace icon
+icon_bat0=""                       ## Battery icon
+icon_bat1=""                       ## Battery icon
+icon_bat2=""                       ## Battery icon
+icon_bat3=""                       ## Battery icon
+icon_bat4=""                       ## Battery icon
